@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>BlackJack - CodeWorks</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+
+<body>
+
+  <div class="board">
+    <section id="title">
+      <h1>♣<span class="red">♥♦</span>♠BlackJack🦆👍🎨♠<span class="red">♦♥</span>♣</h1>
+    </section>
+
+
+    <section id="dealer">
+      <img class="dealerhand card dhfirst" src="css/images/gray_back.png" alt="card-img">
+      <img class="facedown card dhsecond" src="css/images/gray_back.png" alt="card-img">
+    </section>
+
+
+    <section id="middle">
+      <div class="row">
+        <div class="col-4">
+
+          <h3>Your score: <em class="player-score"></em></h3>
+        </div>
+        <div class="col-4">
+          <button type="button" name="replay" class="btn btn-danger button replay">Replay</button>
+          <button type="button" name="hit" class="btn btn-danger button hit">Hit</button>
+          <button type="button" name="stand" class="btn btn-danger button stand"> Stand</button>
+          <h3>Dealer must stand on 17 and draw to 16.</h3>
+        </div>
+        <div class="col-4">
+          <h3>Dealer score: <em class="dealer-score"></em></h3>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="player">
+      <img class="playerhand card phfirst" src="css/images/gray_back.png" alt="card-img">
+      <img class="playerhand card phsecond" src="css/images/gray_back.png" alt="card-img">
+    </section>
+
+
+  </div>
+
+  <div class="cover">
+    <div class="rulesbox">
+      <h1>The Rules</h1>
+      <p>The goal is to get closer to the score of 21 than the dealer without going above.</p>
+<ul>
+  <li>Normal numbered cards scores are equal to their number.</li>
+  <li>Picture cards ( J, Q K) count as 10.</li>
+  <li>Ace counts as 1 or 11, depending on if 11 would bust the player.</li>
+</ul>
+<p>
+
+Press hit for an additional card and stand for the dealers turn
+<br>
+The dealer must hit until they have a score of 17 or more and then must stand.
+</p>
+      <button type="button" name="Play!" class="playbtn btn btn-danger btn-lg">Play!</button>
+    </div>
+  </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="rules.js" charset="utf-8"></script>
+</body>
+
+</html>
