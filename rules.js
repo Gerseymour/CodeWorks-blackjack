@@ -19,14 +19,16 @@
 //   if you stand and the dealer goes bust
 // }
 //  press play -> .rulesbox to display none
+
+
 $(".playbtn").on("click", start);
 $(".hit").on("click", playerDraw);
 $(".replay").on("click", restart);
 $(".stand").on("click", dealer);
-$(".player-wins").text(win)
-$(".dealer-wins").text(dealer)
-var win = 0
-var dealer = 0
+// $(".player-wins").text(win)
+// $(".dealer-wins").text(dealer)
+// var win = 0
+// var dealer = 0
 
 
 
@@ -40,7 +42,7 @@ function restart() {
   $(".replay").hide();
   $(".dealer-score").removeClass("yellow red");
   $(".player-score").removeClass("yellow red");
-  $("h1").html("♣<span class='red'>♥♦</span>♠BlackJack🦆👍🎨♠<span class='red'>♦♥</span>♣")
+  $("h1").html("♣<span class='red'>♥♦</span>♠BlackJack♠<span class='red'>♦♥</span>♣")
   start();
 }
 
@@ -76,7 +78,7 @@ function dealer() {
   var newRan = Math.floor((Math.random() * 52) + 1);
   $("#dealer").append('<img class="dealerhand card drawn" src= "css/deck/' + newRan + '.png" alt=' + newRan + '>')
   dealerScore();
-  }while (dealerScore() <= 16)
+}while (dealerScore() < 17)
   whoWins();
 }
 
@@ -94,9 +96,19 @@ function playerScore() {
     var cardScore = getScore($(".playerhand").eq(i).attr("alt"), scorePlayer)
     scorePlayer = scorePlayer + cardScore
   }
-  $(".player-score").text(scorePlayer);
-  bustCheck(scorePlayer);
+  var aceScore = aceCheckPlay(scorePlayer);
+  bustCheck(aceScore);
+  $(".player-score").text(aceScore);
 
+}
+
+function aceCheckPlay(score){
+  var scoreAce = score
+  for (var j = 0; j < $(".playerhand").length; j++) {
+   if (parseInt(($(".playerhand").eq(j).attr("alt")), 10)  <= 4 && scoreAce < 12){
+    return (scoreAce + 10);
+  }}
+    return scoreAce;
 }
 
 function dealerScore() {
@@ -105,10 +117,18 @@ function dealerScore() {
     var cardScore = getScore($(".dealerhand").eq(i).attr("alt"), scoreDealer)
     scoreDealer = scoreDealer + cardScore
   }
-  $(".dealer-score").text(scoreDealer);
-  return scoreDealer;
+  var aceScoreDeal = aceCheckDeal(scoreDealer);
+  $(".dealer-score").text(aceScoreDeal);
+  return aceScoreDeal;
 }
-
+function aceCheckDeal(score){
+  var scoreAceDeal = score
+  for (var k = 0; k < $(".dealerhand").length; k++) {
+    if (parseInt(($(".dealerhand").eq(k).attr("alt")), 10)  <= 4 && scoreAceDeal < 12){
+      return (scoreAceDeal + 10);
+  }}
+    return scoreAceDeal;
+}
 
 function bustCheck(score) {
   if (score > 21) {
@@ -148,11 +168,7 @@ function whoWins() {
 function getScore(alt, score) {
   var altNum = parseInt(alt, 10);
   if (altNum <= 4) {
-    if (score < 11) {
-      altNum = 11
-    } else {
-      altNum = 1
-    }
+    altNum = 1
   } else if (altNum <= 8) {
     altNum = 2
   } else if (altNum <= 12) {
