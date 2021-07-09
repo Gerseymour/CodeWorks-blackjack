@@ -1,34 +1,10 @@
-// console.log("Hello world")
-//
-//
-// function draw {
-//   when button hit
-//   add random card to hand
-// }
-// function count {
-//   add hand
-//   if greater than 21 -> bust
-//   if = 21 dealer turn
-//   if lower than 21 add hit or stand
-// }
-// function stand {
-//   dealer turn
-//   dealer draws until 5+ cards or 21 or bust
-// }
-// function win {
-//   if you stand and the dealer goes bust
-// }
-//  press play -> .rulesbox to display none
 
 
 $(".playbtn").on("click", start);
 $(".hit").on("click", playerDraw);
 $(".replay").on("click", restart);
 $(".stand").on("click", dealer);
-// $(".player-wins").text(win)
-// $(".dealer-wins").text(dealer)
-// var win = 0
-// var dealer = 0
+
 
 
 
